@@ -1,67 +1,91 @@
+// ===== Scroll Animation =====
+const frameCount = 240;
 const canvas = document.getElementById("scrollCanvas");
 const context = canvas.getContext("2d");
 
-const frameCount = 240;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const currentFrame = index => 
+  `frames/ezgif-frame-${String(index).padStart(3, '0')}.jpg`;
+
 const images = [];
-const imageSeq = {
-    frame: 0
-};
+let img = new Image();
 
-// Resize canvas properly
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-// Preload images
 for (let i = 1; i <= frameCount; i++) {
-    const img = new Image();
-    const frameNumber = String(i).padStart(3, '0');
-    img.src = `frames/ezgif-frame-${frameNumber}.jpg`;
-    images.push(img);
+  const image = new Image();
+  image.src = currentFrame(i);
+  images.push(image);
 }
 
-// Draw image centered
-function drawImage(img) {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    const scale = Math.min(
-        canvas.width / img.width,
-        canvas.height / img.height
-    );
-
-    const x = (canvas.width / 2) - (img.width / 2) * scale;
-    const y = (canvas.height / 2) - (img.height / 2) * scale;
-
-    context.drawImage(
-        img,
-        x,
-        y,
-        img.width * scale,
-        img.height * scale
-    );
+function render() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.drawImage(img, 0, 0, canvas.width, canvas.height);
 }
 
-// Update frame on scroll
-function updateImage() {
-    const scrollTop = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const scrollFraction = scrollTop / maxScroll;
-    const frameIndex = Math.min(
-        frameCount - 1,
-        Math.floor(scrollFraction * frameCount)
-    );
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const frameIndex = Math.min(
+    frameCount - 1,
+    Math.floor((scrollTop / maxScroll) * frameCount)
+  );
 
-    if (images[frameIndex].complete) {
-        drawImage(images[frameIndex]);
+  img.src = images[frameIndex].src;
+  render();
+});
+
+// ===== Gemini Chat Integration =====
+
+const API_KEY = "YOUR_GEMINI_API_KEY"; // Replace with your key
+
+const SYSTEM_PROMPT = `
+You are a resume assistant.
+STRICT RULES:
+1. Answer ONLY using the content from Jazir Ahmed's resume.
+2. Do NOT add extra information.
+3. If the answer is not in the resume, reply:
+   "This information is not available in the resume."
+Resume Content:
+- Name: Jazir Ahmed S
+- ECE Student at Government College of Engineering, Tirunelveli
+- CGPA: 7.6
+- Skills: C, Python, Verilog, SystemVerilog, Arduino, ARM, etc.
+- Project: Automatic Railway Gate Controller
+`;
+
+async function sendMessage() {
+  const input = document.getElementById("userInput");
+  const message = input.value;
+  if (!message) return;
+
+  appendMessage("You", message);
+  input.value = "";
+
+  const response = await fetch(
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + API_KEY,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [
+          { role: "user", parts: [{ text: SYSTEM_PROMPT + "\nUser Question: " + message }] }
+        ]
+      })
     }
+  );
+
+  const data = await response.json();
+  const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Error";
+
+  appendMessage("Bot", reply);
 }
 
-window.addEventListener("scroll", updateImage);
+function appendMessage(sender, text) {
+  const chat = document.getElementById("chatMessages");
+  const msg = document.createElement("div");
+  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+  chat.appendChild(msg);
+  chat.scrollTop = chat.scrollHeight;
+}
 
-// Draw first frame once loaded
-images[0].onload = () => {
-    drawImage(images[0]);
-};
