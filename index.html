@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jazir Ahmed | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Scroll Animation Canvas -->
+  <section class="animation-section">
+    <canvas id="scrollCanvas"></canvas>
+  </section>
+
+  <!-- Resume Content -->
+  <section class="content">
+    <h1>Jazir Ahmed S</h1>
+    <p>Electronics & Communication Engineering Student</p>
+
+    <div class="card">
+      <h2>Objective</h2>
+      <p>
+        Motivated Pre-final year Electronics and Communication Engineering student 
+        at Government College of Engineering, Tirunelveli. Passionate about bridging 
+        hardware and software with strong interest in VLSI Design, Design Verification, 
+        and Embedded Systems.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Education</h2>
+      <p><strong>B.E ECE (2023–2027)</strong><br>
+      Government College of Engineering, Tirunelveli<br>
+      CGPA: 7.6</p>
+
+      <p><strong>HSC (2022–2023)</strong><br>
+      Alpha Matric Higher Secondary School<br>
+      Score: 92.6%</p>
+    </div>
+
+    <div class="card">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li>Languages: C, Python, Verilog HDL, SystemVerilog (Basic)</li>
+        <li>Hardware Tools: Xilinx Vivado, ModelSim, Microwind</li>
+        <li>Embedded: Arduino, 8051, ARM, IoT Sensors</li>
+        <li>Core: Digital Logic Design, FSM, STA, CMOS</li>
+        <li>Tools: MATLAB, Keil Vision, 3D Designing Tools</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Key Project</h2>
+      <p><strong>Automatic Railway Gate Controller</strong></p>
+      <p>
+        Automated safety system using IR sensors to detect train position 
+        and control railway gate opening/closing mechanism.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget">
+    <div class="chat-header">Resume Assistant</div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Ask about my resume...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
