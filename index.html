@@ -1,77 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Jazir Ahmed | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jazir Ahmed S | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0f172a;
+    color: #f1f5f9;
+    overflow-x: hidden;
+}
+
+/* Canvas Background */
+#animationCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.08; /* Watermark transparency */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Main Content */
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+section {
+    margin-bottom: 80px;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    border-left: 4px solid #38bdf8;
+    padding-left: 12px;
+}
+
+p {
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+ul {
+    padding-left: 20px;
+    margin-bottom: 12px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(6px);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.08);
+}
+
+.highlight {
+    color: #38bdf8;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px;
+    opacity: 0.6;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Scroll Animation Canvas -->
-  <section class="animation-section">
-    <canvas id="scrollCanvas"></canvas>
-  </section>
+<canvas id="animationCanvas"></canvas>
 
-  <!-- Resume Content -->
-  <section class="content">
-    <h1>Jazir Ahmed S</h1>
-    <p>Electronics & Communication Engineering Student</p>
+<div class="container">
 
-    <div class="card">
-      <h2>Objective</h2>
-      <p>
-        Motivated Pre-final year Electronics and Communication Engineering student 
-        at Government College of Engineering, Tirunelveli. Passionate about bridging 
-        hardware and software with strong interest in VLSI Design, Design Verification, 
-        and Embedded Systems.
-      </p>
-    </div>
+<section>
+<h1>Jazir Ahmed S</h1>
+<p><strong>Electronics & Communication Engineering Student</strong></p>
+<p>📍 Thittuvilai, Kanyakumari, Tamil Nadu - 629852</p>
+<p>📞 +91 9786903392 | ✉️ jazirahmed098@gmail.com</p>
+</section>
 
-    <div class="card">
-      <h2>Education</h2>
-      <p><strong>B.E ECE (2023–2027)</strong><br>
-      Government College of Engineering, Tirunelveli<br>
-      CGPA: 7.6</p>
+<section>
+<h2>Objective</h2>
+<div class="card">
+<p>
+Motivated Pre-final year Electronics and Communication Engineering student at 
+<strong>Government College of Engineering, Tirunelveli</strong>. 
+Passionate about bridging hardware and software with strong interest in 
+<span class="highlight">VLSI Design, Design Verification, and Embedded Systems</span>. 
+Eager to contribute innovative hardware solutions through solid academic foundation and problem-solving skills.
+</p>
+</div>
+</section>
 
-      <p><strong>HSC (2022–2023)</strong><br>
-      Alpha Matric Higher Secondary School<br>
-      Score: 92.6%</p>
-    </div>
+<section>
+<h2>Education</h2>
+<div class="card">
+<p><strong>B.E. Electronics and Communication Engineering</strong> (2023 – 2027 Expected)</p>
+<p>Government College of Engineering, Tirunelveli</p>
+<p>CGPA: 7.6</p>
+<p>Key Subjects: Digital Electronics, VLSI Design, Signal Processing, Microprocessors & Microcontrollers</p>
+</div>
 
-    <div class="card">
-      <h2>Technical Skills</h2>
-      <ul>
-        <li>Languages: C, Python, Verilog HDL, SystemVerilog (Basic)</li>
-        <li>Hardware Tools: Xilinx Vivado, ModelSim, Microwind</li>
-        <li>Embedded: Arduino, 8051, ARM, IoT Sensors</li>
-        <li>Core: Digital Logic Design, FSM, STA, CMOS</li>
-        <li>Tools: MATLAB, Keil Vision, 3D Designing Tools</li>
-      </ul>
-    </div>
+<div class="card">
+<p><strong>Higher Secondary Certificate (HSC)</strong> (2022 – 2023)</p>
+<p>Alpha Matric Higher Secondary School</p>
+<p>Score: 92.6%</p>
+</div>
+</section>
 
-    <div class="card">
-      <h2>Key Project</h2>
-      <p><strong>Automatic Railway Gate Controller</strong></p>
-      <p>
-        Automated safety system using IR sensors to detect train position 
-        and control railway gate opening/closing mechanism.
-      </p>
-    </div>
+<section>
+<h2>Technical Skills</h2>
+<div class="card">
+<ul>
+<li><strong>Languages:</strong> C, Python, Verilog HDL, SystemVerilog (Basic)</li>
+<li><strong>HDL & Simulation:</strong> Xilinx Vivado, ModelSim, Microwind</li>
+<li><strong>Embedded Systems:</strong> Arduino, 8051 Microcontroller, ARM, IoT Sensors</li>
+<li><strong>Core Concepts:</strong> Digital Logic Design, FSM, Static Timing Analysis, CMOS Logic</li>
+<li><strong>Tools:</strong> MATLAB, Keil Vision, 3D Designing Tools</li>
+</ul>
+</div>
+</section>
 
-  </section>
+<section>
+<h2>Key Project</h2>
+<div class="card">
+<p><strong>Automatic Railway Gate Controller (Group Project)</strong></p>
+<ul>
+<li>Engineered automated safety system to prevent accidents at unmanned railway crossings.</li>
+<li>Used IR sensors for train detection and automated gate opening/closing mechanism.</li>
+</ul>
+</div>
+</section>
 
-  <!-- Chat Widget -->
-  <div class="chat-widget">
-    <div class="chat-header">Resume Assistant</div>
-    <div class="chat-messages" id="chatMessages"></div>
-    <div class="chat-input">
-      <input type="text" id="userInput" placeholder="Ask about my resume...">
-      <button onclick="sendMessage()">Send</button>
-    </div>
-  </div>
+<section>
+<h2>Soft Skills</h2>
+<div class="card">
+<ul>
+<li>Strategic Planning</li>
+<li>Critical Problem Solving</li>
+<li>Creative Thinking</li>
+<li>Adaptability</li>
+</ul>
+</div>
+</section>
 
-<script src="script.js"></script>
+<section>
+<h2>Languages & Interests</h2>
+<div class="card">
+<p><strong>Languages:</strong> English, Tamil, Arabic</p>
+<p><strong>Interests:</strong> Multimedia Arts, 3D Designing, Editing</p>
+</div>
+</section>
+
+<div class="footer">
+© 2026 Jazir Ahmed S | Portfolio
+</div>
+
+</div>
+
+<script>
+const canvas = document.getElementById("animationCanvas");
+const ctx = canvas.getContext("2d");
+
+let frameCount = 240;
+let images = [];
+let currentFrame = index => `frames/ezgif-frame-${String(index).padStart(3, '0')}.jpg`;
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+for (let i = 1; i <= frameCount; i++) {
+    const img = new Image();
+    img.src = currentFrame(i);
+    images.push(img);
+}
+
+function render() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const scrollTop = document.documentElement.scrollTop;
+    const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollFraction = scrollTop / maxScrollTop;
+    const frameIndex = Math.min(
+        frameCount - 1,
+        Math.floor(scrollFraction * frameCount)
+    );
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(images[frameIndex], 0, 0, canvas.width, canvas.height);
+}
+
+window.addEventListener("scroll", render);
+window.addEventListener("resize", render);
+
+images[0].onload = render;
+</script>
+
 </body>
 </html>
-
